@@ -30,12 +30,6 @@
     @media(max-width:500px){
         margin-right: 1em;
     }
-    
-    &:hover{
-        height: 48px;
-        width: 48px;
-        transition: 1s;
-    }
 }
 
 .blue{
@@ -45,4 +39,44 @@
 
 .green{
     fill: #ccf381;
+}
+
+.popover_container{
+    padding: 2em;
+    color: #4831d4;
+
+    h3{
+        font-weight: 400;
+        margin: 0;
+    }
+}
+
+.close_icon_container{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2em;
+
+    >svg{
+        height: 28px;
+        width: 28px;
+    }
+}
+
+.details{
+    padding: 2em 4em 1em 1em;
+}
+
+.contact{
+    padding: 2em 0;
+
+    >h3{
+        color: #cbc9e2; 
+        padding-bottom: 0.5em;
+    }
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
