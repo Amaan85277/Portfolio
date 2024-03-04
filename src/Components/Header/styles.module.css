@@ -1,0 +1,28 @@
+.container{
+    position: fixed;
+    top: 6vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.main_icon{
+    margin-left: 4vw;
+    height: 40px;
+    width: 40px;
+}
+
+.menu{
+    margin-right: 4vw;
+    height: 40px;
+    width: 40px;
+}
+
+.blue{
+    fill: #4831d4;
+}
+
+
+.green{
+    fill: #ccf381;
+}

@@ -6,6 +6,7 @@ import Two from "./Components/Two";
 import Three from "./Components/Three";
 import Four from "./Components/Four";
 import Five from "./Components/Five";
+import Header from "./Components/Header";
 
   
 function App() {
@@ -17,9 +18,14 @@ function App() {
       element.scrollIntoView({ behavior: "smooth" });
   };
 
+  console.log('activeWindow : ', activeWindow)
+
   return (
     <div id="main_con" className={styles.container}>
+      <Header activeWindow={activeWindow} />
+
       <NavBar activeWindow={activeWindow} scrollTo={scrollTo} />
+
 
       <One scrollTo={scrollTo} />
       <Two scrollTo={scrollTo} />
