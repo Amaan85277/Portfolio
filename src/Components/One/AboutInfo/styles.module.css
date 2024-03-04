@@ -1,0 +1,28 @@
+.container {
+    padding: 0 10vw;
+    color: #4831d4;
+    flex: 1;
+
+    @media(max-width:500px){
+        padding: 0;
+    }
+}
+
+.post{
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.flex{
+    margin-top: 10vh;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    span{
+        width: 120px;
+        overflow-wrap: break-word;  
+        word-wrap: break-word; 
+        word-break: break-word;
+    }
+}

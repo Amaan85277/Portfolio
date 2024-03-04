@@ -1,4 +1,12 @@
 .container {
     height: 100vh;
     background-color: #ccf381;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 6em;
+
+    @media(max-width:500px){
+        padding: 4em 2em;
+    }
 }

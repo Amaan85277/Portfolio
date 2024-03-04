@@ -1,21 +1,34 @@
 .container{
-    position: fixed;
-    top: 6vh;
+    position: absolute;
+    top: 4em;
+    background-color: inherit;
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    @media(max-width:500px){
+        top:2em;
+    }
 }
 
 .main_icon{
-    margin-left: 4vw;
+    margin-left: 3em;
     height: 40px;
     width: 40px;
+
+    @media(max-width:500px){
+        margin-left: 1em;
+    }
 }
 
 .menu{
-    margin-right: 4vw;
+    margin-right: 3em;
     height: 40px;
     width: 40px;
+
+    @media(max-width:500px){
+        margin-right: 1em;
+    }
     
     &:hover{
         height: 48px;

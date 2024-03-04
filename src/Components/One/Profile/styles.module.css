@@ -1,0 +1,17 @@
+.container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.img_wrapper{
+    border-bottom: 4px solid #fff;
+
+    img{
+        padding: 16px;
+        width: 280px;
+        height: auto;
+        object-fit: contain;
+        mix-blend-mode: darken;
+    }
+}
