@@ -13,7 +13,7 @@ function Five({ scrollTo=()=>{} }) {
             return;
         }
         const rect = ele.getBoundingClientRect();
-        setIsInView(rect.top < window.innerHeight && rect.bottom >= 0);
+        setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
     };
 
     useEffect(() => {

@@ -13,7 +13,7 @@ function Two({ scrollTo = () => {} }) {
             return;
         }
         const rect = ele.getBoundingClientRect();
-        setIsInView(rect.top + 100 < window.innerHeight  && rect.bottom >= 100);
+        setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
     };
 
     useEffect(() => {
@@ -36,9 +36,10 @@ function Two({ scrollTo = () => {} }) {
         }
         if (!wasInView && isInView) {
             // Element has come into view 
-            scrollTo(2);
+            const backgroundStyle = window.getComputedStyle(eleRef.current, null).getPropertyValue("background-color");
+            scrollTo(2, backgroundStyle);
         }
-    }, [eleRef, isInView, scrollTo, wasInView]);
+    }, [isInView, scrollTo, wasInView]);
 
   return (
       <div id="#2" className={styles.container} ref={eleRef} />
