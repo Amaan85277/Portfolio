@@ -18,8 +18,6 @@ function App() {
       element.scrollIntoView({ behavior: "smooth" });
   };
 
-  console.log('activeWindow : ', activeWindow)
-
   return (
     <div id="main_con" className={styles.container}>
       <Header activeWindow={activeWindow} />
