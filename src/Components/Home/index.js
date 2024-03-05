@@ -23,11 +23,19 @@ function Home() {
     }, 800);
   }
 
+  function scrollToWithoutLag(i) {
+      setActiveWindow(i);
+      const element = document.getElementById(`#${i}`);
+      if (element) {
+        element.scrollIntoView({ behavior:'smooth' });
+      }
+  }
+
   return (
     <div id="main_con" className={styles.container}>
       <Header activeWindow={activeWindow} />
 
-      <NavBar activeWindow={activeWindow} scrollTo={scrollTo} />
+      <NavBar activeWindow={activeWindow} scrollToWithoutLag={scrollToWithoutLag} />
 
       <One scrollTo={scrollTo} />
       <Two scrollTo={scrollTo} />
