@@ -70,8 +70,12 @@
     padding: 2em 0;
 
     >h3{
-        color: #cbc9e2; 
+        color: #cbc9e2;
         padding-bottom: 0.5em;
+    }
+
+    >a{
+        text-decoration: none !important;
     }
 }
 

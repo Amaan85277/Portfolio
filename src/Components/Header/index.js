@@ -59,13 +59,16 @@ function Header({ activeWindow = 0 }) {
 
             <div className={styles.contact}>
               <h3>SAY HI</h3>
-              <a>amaanmaino@gmail.com</a> {/* change it to something else */}
+
+              <a href="mailto: amaanmaino@gmail.com">amaanmaino@gmail.com</a>
             </div>
 
             <div className={styles.flex}>
-              <h3>LN</h3>
-              <h3>GH</h3>
-              <h3>TW</h3>
+              <h3><a href="https://www.linkedin.com/in/amaanahmad-/">LN</a></h3>
+
+              <h3><a href="https://github.com/Amaan85277">GH</a></h3>
+
+              <h3><a href="https://www.linkedin.com/in/amaanahmad-/">TW</a></h3> {/* add some other link here*/}
             </div>
           </div>
         </div>
