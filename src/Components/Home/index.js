@@ -23,7 +23,6 @@ function Home() {
 
       <NavBar activeWindow={activeWindow} scrollTo={scrollTo} />
 
-
       <One scrollTo={scrollTo} />
       <Two scrollTo={scrollTo} />
       <Three scrollTo={scrollTo} />
