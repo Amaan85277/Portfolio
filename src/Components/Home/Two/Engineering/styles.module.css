@@ -1,0 +1,28 @@
+.container {
+    flex: 1;
+    padding: 1em;
+    margin: 1em;
+}
+
+.svg{
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    margin-bottom: 3em;
+
+    @media(max-width:500px){
+        display: none;
+    }
+}
+
+.label{
+    color: #4831d4;
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 32px;
+}
+
+.value{
+    color: #4c266a;
+    line-height: 28px;
+}
