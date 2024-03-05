@@ -7,15 +7,21 @@ import Four from "./Four";
 import Five from "./Five";
 import Header from "../Header";
 import NavBar from "../NavBar";
-  
+
 function Home() {
   const [activeWindow, setActiveWindow] = useState(1);
 
-  function scrollTo (i) {
+  let timeout;
+  function scrollTo(i) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
       setActiveWindow(i);
       const element = document.getElementById(`#${i}`);
-      element.scrollIntoView({ behavior: "smooth" });
-  };
+      if (element) {
+        element.scrollIntoView();
+      }
+    }, 800);
+  }
 
   return (
     <div id="main_con" className={styles.container}>
@@ -28,7 +34,7 @@ function Home() {
       <Three scrollTo={scrollTo} />
       <Four scrollTo={scrollTo} />
       <Five scrollTo={scrollTo} />
-      </div>
+    </div>
   );
 }
 
