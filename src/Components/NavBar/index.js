@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-function NavBar({activeWindow=0, scrollTo=()=>{}}) {
+function NavBar({activeWindow=0, scrollToWithoutLag=()=>{}}) {
   return (
     <div className={styles.parent_nav}>
       <div className={styles.diamond_container}>
@@ -15,7 +15,7 @@ function NavBar({activeWindow=0, scrollTo=()=>{}}) {
               }
               role="presentation"
               onClick={() => {
-                scrollTo(i + 1);
+                scrollToWithoutLag(i + 1);
               }}
               key={item}
             />
