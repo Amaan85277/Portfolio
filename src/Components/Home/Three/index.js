@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './styles.module.css'
-import { usePrevious } from '../../utils/usePrevious';
+import { usePrevious } from '../../../utils/usePrevious';
 
-function Five({ scrollTo=()=>{} }) {
+function Three({ scrollTo=()=>{} }) {
     const eleRef = useRef();
     const [isInView, setIsInView] = React.useState(false);
     const wasInView = usePrevious(isInView);
@@ -36,13 +36,13 @@ function Five({ scrollTo=()=>{} }) {
         }
         if (!wasInView && isInView) {
             // Element has come into view
-            scrollTo(5);
+            scrollTo(3);
         }
     }, [isInView, scrollTo, wasInView]);
   
   return (
-    <div id="#5" className={styles.container} ref={eleRef} />
+    <div id="#3" className={styles.container} ref={eleRef} />
   )
 }
 
-export default Five
+export default Three

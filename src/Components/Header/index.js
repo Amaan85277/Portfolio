@@ -4,6 +4,7 @@ import { FaMagento } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { RiMenu3Fill } from "react-icons/ri";
 import Popover from "@mui/material/Popover";
+import { Link } from 'react-router-dom'
 
 function Header({ activeWindow = 0 }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -55,7 +56,7 @@ function Header({ activeWindow = 0 }) {
           </div>
 
           <div className={styles.details}>
-            <h3>My Resume</h3>
+            <Link to="/my-resume"><h3>My Resume</h3></Link>
 
             <div className={styles.contact}>
               <h3>SAY HI</h3>

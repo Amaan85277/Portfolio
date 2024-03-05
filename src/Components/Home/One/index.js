@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./styles.module.css";
-import { usePrevious } from "../../utils/usePrevious";
+import { usePrevious } from "../../../utils/usePrevious";
 import AboutInfo from "./AboutInfo";
 import Profile from "./Profile";
 

@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react'
-import styles from './styles.module.css'
-import { usePrevious } from '../../utils/usePrevious';
+import React, { useEffect, useRef, useState } from "react";
+import styles from "./styles.module.css";
+import { usePrevious } from "../../../utils/usePrevious";
 
-function Three({ scrollTo=()=>{} }) {
+function Two({ scrollTo = () => {} }) {
     const eleRef = useRef();
-    const [isInView, setIsInView] = React.useState(false);
+    const [isInView, setIsInView] = useState(false);
     const wasInView = usePrevious(isInView);
 
     const checkInView = () => {
@@ -35,14 +35,15 @@ function Three({ scrollTo=()=>{} }) {
             return;
         }
         if (!wasInView && isInView) {
-            // Element has come into view
-            scrollTo(3);
+            // Element has come into view 
+            const backgroundStyle = window.getComputedStyle(eleRef.current, null).getPropertyValue("background-color");
+            scrollTo(2, backgroundStyle);
         }
     }, [isInView, scrollTo, wasInView]);
-  
+
   return (
-    <div id="#3" className={styles.container} ref={eleRef} />
-  )
+      <div id="#2" className={styles.container} ref={eleRef} />
+  );
 }
 
-export default Three
+export default Two;

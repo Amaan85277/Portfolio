@@ -1,0 +1,31 @@
+.container{
+    background-color: #323639;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    display: flex;
+}
+
+.back{
+    margin: 2em;
+    fill: #ccf381;
+    height: 28px;
+    width: 28px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.pdf_container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.pdf{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width:90%;
+    height: 100%;
+    border-width: 0;
+}

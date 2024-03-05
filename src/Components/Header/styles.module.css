@@ -64,6 +64,11 @@
 
 .details{
     padding: 2em 4em 1em 1em;
+
+    a{
+        text-decoration: none !important;
+        color: #4831d4 !important;
+    }
 }
 
 .contact{
@@ -72,10 +77,6 @@
     >h3{
         color: #cbc9e2;
         padding-bottom: 0.5em;
-    }
-
-    >a{
-        text-decoration: none !important;
     }
 }
 
