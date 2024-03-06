@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './styles.module.css'
 import { usePrevious } from '../../../utils/usePrevious';
+import Experience from './Experience';
+import ExperienceFlow from './ExperienceFlow';
 
 function Three({ scrollTo=()=>{} }) {
     const eleRef = useRef();
@@ -41,7 +43,11 @@ function Three({ scrollTo=()=>{} }) {
     }, [isInView, scrollTo, wasInView]);
   
   return (
-    <div id="#3" className={styles.container} ref={eleRef} />
+      <div id="#3" className={styles.container} ref={eleRef}>
+          <Experience />
+          
+          <ExperienceFlow />
+    </div>
   )
 }
 
