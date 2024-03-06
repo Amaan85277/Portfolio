@@ -1,5 +1,6 @@
 .container {
-    height: 100vh;
+    min-height: 100vh; 
+    height: fit-content;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -7,6 +8,5 @@
 
     @media(max-width:500px){
         padding: 4em 2em;
-        height: fit-content;
     }
 }
