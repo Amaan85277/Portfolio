@@ -4,26 +4,28 @@ import styles from "./styles.module.css";
 const data = [
   {
     id: "1",
-    val: `My goal is to make them user-friendly, look great, and easy for everyone to use, 
+    val: `My goal is to make user-friendly interfaces, look great, and easy to use for everyone, 
     minimizing the efforts from the user.`,
   },
   {
     id: "2",
-    val: `Currently, I work at Cogoport, Gurgaon as a Software Development Engineer, 
-    inclined towards frontend development, crafting thoughtful and inclusive experiences that adhere to web standards
-    for all the admins and stakeholders across all entities.`,
+    val: `I'm currently a Software Development Engineer at Cogoport in Gurgaon, 
+    specializing in frontend development. My focus is on creating intuitive and inclusive experiences
+    that meet web standards for all admins and stakeholders, across all entities/countries.`,
   },
   {
     id: "3",
-    val: `Before getting into full time role, I was working as an intern at Cogoport, Mumbai, 
-    where I worked on a suite of tools and services tailored towards KAMs and their managers to boost sales 
-    and increase revenue.`,
+    val: `Before stepping into my full-time role, I interned at Cogoport in Mumbai. During my internship, 
+    I concentrated on developing a suite of tools and services designed specifically for
+    Key Account Managers (KAMs) and their managers. These tools aimed to enhance sales strategies and drive
+    revenue growth.`,
   },
   {
     id: "4",
-    val: `Prior to Cogoport, I was a Web Developer as an intern at National Informatics Center, 
-    building JavaScript applications and interfaces, working on 'One Nation One Ration Card' project, 
-    revolutionizing ration schemes and benefiting millions of citizens across the country.`,
+    val: `Before joining Cogoport, I interned as a Web Developer at the National Informatics Center. 
+    During this time, I focused on building JavaScript applications and interfaces for the
+    'One Nation One Ration Card' project. This initiative aimed to modernize ration schemes,
+    ultimately benefiting millions of citizens nationwide.`,
   },
 ];
 
@@ -31,7 +33,7 @@ function Experience() {
   return (
     <div className={styles.container}>
       <div>
-        <div className={styles.label}>Over the period,</div>
+        <div className={styles.label}>So Far,</div>
 
         <div className={styles.value}>
           {data.map((item) => (
