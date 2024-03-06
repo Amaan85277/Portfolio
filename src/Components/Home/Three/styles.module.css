@@ -1,14 +1,13 @@
 .container {
-    min-height: 100vh; 
-    height: fit-content;
-    background-color: #4831d4;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap; 
-    padding: 6em;
+  min-height: 100vh;
+  height: fit-content;
+  background-color: #4831d4;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 6em;
 
-
-    @media(max-width:500px){
-        padding: 2em 1em;
-    }
+  @media (max-width: 500px) {
+    padding: 2em 1em;
+  }
 }
