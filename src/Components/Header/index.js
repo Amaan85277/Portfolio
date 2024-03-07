@@ -24,14 +24,14 @@ function Header({ activeWindow = 0, scrollToWithoutLag = () => {} }) {
     <div className={styles.container}>
       <FaMagento
         className={`${styles.main_icon} ${
-          [3,6].includes(activeWindow) ? styles.green : styles.blue
+          [3,5].includes(activeWindow) ? styles.green : styles.blue
         }`}
         onClick={() => scrollToWithoutLag(1)}
       />
 
       <RiMenu3Fill
         className={`${styles.menu} ${
-          [3,6].includes(activeWindow) ? styles.green : styles.blue
+          [3,5].includes(activeWindow) ? styles.green : styles.blue
         }`}
         onClick={handleClick}
       />
