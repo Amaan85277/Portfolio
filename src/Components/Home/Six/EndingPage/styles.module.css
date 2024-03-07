@@ -63,18 +63,32 @@
   padding-top: 3em;
 }
 
+.copyright {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-left: 4px;
+  }
+}
+
 .flex {
   display: flex;
   align-items: center;
 
   h3 {
     margin-left: 3em;
-    /* font-weight: 400; */
     color: var(--color-green) !important;
   }
 
   a {
     text-decoration: none !important;
     color: var(--color-green) !important;
+  }
+
+  @media (max-width: 500px) {
+    h3 {
+      margin-left: 2em;
+    }
   }
 }

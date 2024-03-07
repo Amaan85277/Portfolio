@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
+import { AiOutlineCopyright } from "react-icons/ai";
 
 function EndingPage() {
   return (
@@ -20,7 +21,11 @@ function EndingPage() {
       </div>
 
       <div className={styles.footer}>
-        <div>Amaan Ahmad</div>
+        <div className={styles.copyright}>
+          <AiOutlineCopyright />
+
+          <span>Amaan Ahmad</span>
+        </div>
 
         <div className={styles.flex}>
           <h3>
