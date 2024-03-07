@@ -110,7 +110,7 @@ function Connect() {
             multiline
             rows={2}
             value={message}
-            placeholder="Hi, I think we need a design system for our products at Company X. 
+            placeholder="Hi, we have openings for an amazing frontend developers. 
             How soon can you hop on to discuss this?"
           />
         </div>
