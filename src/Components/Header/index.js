@@ -75,9 +75,8 @@ function Header({ activeWindow = 0, scrollToWithoutLag = () => {} }) {
                 <a href="https://github.com/Amaan85277">GH</a>
               </h3>
               <h3>
-                <a href="https://www.linkedin.com/in/amaanahmad-/">TW</a>
-              </h3>{" "}
-              {/* add some other link here*/}
+                <a href="https://leetcode.com/amaan_a/">LC</a>
+              </h3>
             </div>
           </div>
         </div>
