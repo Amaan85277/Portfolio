@@ -6,12 +6,17 @@ function Toast({ type = "", setToastType = () => {} }) {
 
   const handleClose = () => {
     setOpen(false);
-    setToastType(''); //resetting toast
-  }
+    setToastType(""); //resetting toast
+  };
 
   if (type?.toLowerCase() === "success") {
     return (
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
         <Alert
           onClose={handleClose}
           severity="success"
@@ -25,7 +30,12 @@ function Toast({ type = "", setToastType = () => {} }) {
   }
 
   return (
-    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+    <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={handleClose}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    >
       <Alert
         onClose={handleClose}
         severity="success"

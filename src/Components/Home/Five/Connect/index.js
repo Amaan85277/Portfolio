@@ -9,6 +9,7 @@ function Connect() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [toastType, setToastType] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const reset = () => {
     setName("");
@@ -18,6 +19,8 @@ function Connect() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setLoading(true);
 
     const data = {
       service_id: process.env.REACT_APP_SERVICE_ID,
@@ -33,14 +36,16 @@ function Connect() {
 
     async function sendEmail() {
       try {
-        const res = await axios.post(
-          "https://api.emailjs.com/api/v1.0/email/send",
-          data
-        );
+        await axios
+          .post("https://api.emailjs.com/api/v1.0/email/send", data)
+          .then(() => {
+            setLoading(false);
+          });
         reset();
         setToastType("success");
       } catch (e) {
         console.log("error : ", e);
+        setLoading(false);
         setToastType("error");
       }
     }
@@ -116,6 +121,7 @@ function Connect() {
             color="primary"
             type="submit"
             className={styles.submit_btn}
+            disabled={loading}
           >
             Shoot
             <svg
