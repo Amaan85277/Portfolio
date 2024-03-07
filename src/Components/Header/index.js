@@ -4,9 +4,9 @@ import { FaMagento } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { RiMenu3Fill } from "react-icons/ri";
 import Popover from "@mui/material/Popover";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-function Header({ activeWindow = 0 }) {
+function Header({ activeWindow = 0, scrollToWithoutLag = () => {} }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (e) => {
@@ -26,6 +26,7 @@ function Header({ activeWindow = 0 }) {
         className={`${styles.main_icon} ${
           activeWindow === 3 ? styles.green : styles.blue
         }`}
+        onClick={() => scrollToWithoutLag(1)}
       />
 
       <RiMenu3Fill
@@ -56,7 +57,9 @@ function Header({ activeWindow = 0 }) {
           </div>
 
           <div className={styles.details}>
-            <Link to="/my-resume"><h3>My Resume</h3></Link>
+            <Link to="/my-resume">
+              <h3>My Resume</h3>
+            </Link>
 
             <div className={styles.contact}>
               <h3>SAY HI</h3>
@@ -65,11 +68,16 @@ function Header({ activeWindow = 0 }) {
             </div>
 
             <div className={styles.flex}>
-              <h3><a href="https://www.linkedin.com/in/amaanahmad-/">LN</a></h3>
-
-              <h3><a href="https://github.com/Amaan85277">GH</a></h3>
-
-              <h3><a href="https://www.linkedin.com/in/amaanahmad-/">TW</a></h3> {/* add some other link here*/}
+              <h3>
+                <a href="https://www.linkedin.com/in/amaanahmad-/">LN</a>
+              </h3>
+              <h3>
+                <a href="https://github.com/Amaan85277">GH</a>
+              </h3>
+              <h3>
+                <a href="https://www.linkedin.com/in/amaanahmad-/">TW</a>
+              </h3>{" "}
+              {/* add some other link here*/}
             </div>
           </div>
         </div>

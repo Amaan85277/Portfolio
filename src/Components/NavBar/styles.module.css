@@ -1,52 +1,52 @@
 .parent_nav {
-    position: fixed;
-    display: flex;
-    top: 60vh;
-    right: 6vw;
-    justify-content: flex-end;
+  position: fixed;
+  display: flex;
+  top: 60vh;
+  right: 6vw;
+  justify-content: flex-end;
 }
 
 .diamond_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .inherit_container {
-    display: inherit;
-    flex-direction: column;
-    align-items: center;
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
 }
 
 .blue_background {
-    background-color: #4831d4 !important;
-    transform: rotate(45deg);
+  background-color: #4831d4 !important;
+  transform: rotate(45deg);
 }
 
 .green_background {
-    background-color: #ccf381 !important;
-    transform: rotate(45deg);
+  background-color: #ccf381 !important;
+  transform: rotate(45deg);
 }
 
 .diamond {
-    position: relative;
-    width: 7px;
-    height: 7px;
-    margin: 10px;
-    transition: transform 1s;
+  position: relative;
+  width: 7px;
+  height: 7px;
+  margin: 10px;
+  transition: transform 1s;
 }
 
 .active {
-    width: 10px;
-    height: 10px;
-    transition: transform 1s; /* Add transition for the transform property */
-    transform: rotate(90deg); /* Apply the transform when active */
+  width: 10px;
+  height: 10px;
+  transition: transform 1s; /* Add transition for the transform property */
+  transform: rotate(180deg); /* Apply the transform when active */
 }
 
-.blue_border{
-    border: 2px solid #4831d4;
+.blue_border {
+  border: 2px solid #4831d4;
 }
 
-.green_border{
-    border: 2px solid #ccf381;
+.green_border {
+  border: 2px solid #ccf381;
 }
