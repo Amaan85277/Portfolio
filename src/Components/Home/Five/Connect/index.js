@@ -1,19 +1,55 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { Button, Input, InputLabel, TextField } from "@mui/material";
-import { HiArrowLongRight } from "react-icons/hi2";
+import axios from "axios";
+import Toast from "./Toast";
 
 function Connect() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [toastType, setToastType] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const reset = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (name && email && message) {
-      console.log(name, email, message);
+    setLoading(true);
+
+    const data = {
+      service_id: process.env.REACT_APP_SERVICE_ID,
+      template_id: process.env.REACT_APP_TEMPLATE_ID,
+      user_id: process.env.REACT_APP_PUBLIC_KEY,
+      template_params: {
+        from_name: name,
+        to_name: "Amaan",
+        from_email: email,
+        message,
+      },
+    };
+
+    async function sendEmail() {
+      try {
+        await axios
+          .post("https://api.emailjs.com/api/v1.0/email/send", data)
+          .then(() => {
+            setLoading(false);
+          });
+        reset();
+        setToastType("success");
+      } catch (e) {
+        console.log("error : ", e);
+        setLoading(false);
+        setToastType("error");
+      }
     }
+    sendEmail();
   };
 
   return (
@@ -85,6 +121,7 @@ function Connect() {
             color="primary"
             type="submit"
             className={styles.submit_btn}
+            disabled={loading}
           >
             Shoot
             <svg
@@ -104,6 +141,10 @@ function Connect() {
           </Button>
         </div>
       </form>
+
+      {toastType ? (
+        <Toast type={toastType} setToastType={setToastType} />
+      ) : null}
     </div>
   );
 }
