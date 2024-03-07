@@ -1,0 +1,11 @@
+.container {
+  min-height: 100vh;
+  height: fit-content;
+  background-color: #3d155f;
+  padding: 6em;
+
+  @media (max-width: 500px) {
+    padding: 2em 1em;
+    min-height: 100px;
+  }
+}
