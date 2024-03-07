@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-function NavBar({activeWindow=0, scrollToWithoutLag=()=>{}}) {
+function NavBar({ activeWindow = 0, scrollToWithoutLag = () => { } }) {
+  if (activeWindow === 6) {
+    return null;
+  }
+
   return (
     <div className={styles.parent_nav}>
       <div className={styles.diamond_container}>

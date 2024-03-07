@@ -7,6 +7,7 @@ import Four from "./Four";
 import Five from "./Five";
 import Header from "../Header";
 import NavBar from "../NavBar";
+import Six from "./Six";
 
 function Home() {
   const [activeWindow, setActiveWindow] = useState(1);
@@ -48,6 +49,7 @@ function Home() {
       <Three scrollTo={scrollTo} />
       <Four scrollTo={scrollTo} />
       <Five scrollTo={scrollTo} />
+      <Six scrollTo={scrollTo} />
     </div>
   );
 }
