@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import { AiOutlineCopyright } from "react-icons/ai";
+import { Popover } from "@mui/material";
+import { PiBugDroidDuotone } from "react-icons/pi";
+
+const bug = [
+  {
+    id: "1",
+    val: `Always enhancing. Spot a bug or have suggestions? Reach out!`,
+  },
+  {
+    id: "2",
+    val: `Meanwhile, I'll keep refining this portfolio with fresh updates.`,
+  },
+];
 
 function EndingPage() {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   return (
     <div className={styles.container}>
       <div className={styles.details}>
@@ -14,9 +40,13 @@ function EndingPage() {
             <a href="mailto: amaanmaino@gmail.com">amaanmaino@gmail.com</a>
           </div>
 
-          <Link to="/my-resume">
-            <h3>My Resume</h3>
-          </Link>
+          <div>
+            <Link to="/my-resume">
+              <h3>My Resume</h3>
+            </Link>
+          </div>
+
+          <div className={styles.updates} onClick={handleClick}>Updates/Bug</div>
         </div>
       </div>
 
@@ -41,6 +71,32 @@ function EndingPage() {
           </h3>
         </div>
       </div>
+
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        onClose={handleClose}
+        className={styles.Popover}
+      >
+        <div className={styles.popover_container}>
+          <PiBugDroidDuotone />
+
+          <div>
+            {bug.map((item) => (
+              <div key={item.id}>{item.val}</div>
+            ))}
+          </div>
+        </div>
+      </Popover>
     </div>
   );
 }
