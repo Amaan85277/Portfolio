@@ -46,7 +46,7 @@ function EndingPage() {
             </Link>
           </div>
 
-          <div onClick={handleClick}>Updates/Bug</div>
+          <div className={styles.updates} onClick={handleClick}>Updates/Bug</div>
         </div>
       </div>
 
