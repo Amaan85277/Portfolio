@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import styles from "./styles.module.css";
 import resume from "../../assets/resume.pdf";
-import { FaCat } from "react-icons/fa";
 import { IoBackspace } from "react-icons/io5";
 
 function Resume() {
