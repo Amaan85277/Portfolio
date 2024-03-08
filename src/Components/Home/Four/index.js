@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { usePrevious } from "../../../utils/usePrevious";
 import Connect from "./Connect";
+import { Context } from "../../../Contexts";
 
 function Four({ scrollTo = () => {} }) {
   const eleRef = useRef();
@@ -40,6 +41,16 @@ function Four({ scrollTo = () => {} }) {
       scrollTo(4);
     }
   }, [isInView, scrollTo, wasInView]);
+
+  const { isMobile = false } = useContext(Context);
+
+  if (isMobile) {
+    return (
+      <div id="#4" className={styles.container}>
+        <Connect />
+      </div>
+    );
+  }
 
   return (
     <div id="#4" className={styles.container} ref={eleRef}>

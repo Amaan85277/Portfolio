@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { usePrevious } from "../../../utils/usePrevious";
 import Experience from "./Experience";
 import ExperienceFlow from "./ExperienceFlow";
+import { Context } from "../../../Contexts";
 
 function Three({ scrollTo = () => {} }) {
   const eleRef = useRef();
@@ -41,6 +42,18 @@ function Three({ scrollTo = () => {} }) {
       scrollTo(3);
     }
   }, [isInView, scrollTo, wasInView]);
+
+  const { isMobile = false } = useContext(Context);
+
+  if (isMobile) {
+    return (
+      <div id="#3" className={styles.container}>
+        <Experience />
+
+        <ExperienceFlow />
+      </div>
+    );
+  }
 
   return (
     <div id="#3" className={styles.container} ref={eleRef}>

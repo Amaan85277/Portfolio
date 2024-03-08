@@ -1,51 +1,62 @@
-import React, { useEffect, useRef } from 'react'
-import styles from './styles.module.css'
-import { usePrevious } from '../../../utils/usePrevious';
-import EndingPage from './EndingPage';
+import React, { useContext, useEffect, useRef } from "react";
+import styles from "./styles.module.css";
+import { usePrevious } from "../../../utils/usePrevious";
+import EndingPage from "./EndingPage";
+import { Context } from "../../../Contexts";
 
-function Five({ scrollTo=()=>{} }) {
-    const eleRef = useRef();
-    const [isInView, setIsInView] = React.useState(false);
-    const wasInView = usePrevious(isInView);
+function Five({ scrollTo = () => {} }) {
+  const eleRef = useRef();
+  const [isInView, setIsInView] = React.useState(false);
+  const wasInView = usePrevious(isInView);
 
-    const checkInView = () => {
-        const ele = eleRef.current;
-        if (!ele) {
-            return;
-        }
-        const rect = ele.getBoundingClientRect();
-        setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
+  const checkInView = () => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    const rect = ele.getBoundingClientRect();
+    setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
+  };
+
+  useEffect(() => {
+    checkInView();
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("scroll", checkInView);
+    window.addEventListener("resize", checkInView);
+    return () => {
+      document.removeEventListener("scroll", checkInView);
+      window.removeEventListener("resize", checkInView);
     };
+  }, []);
 
-    useEffect(() => {
-        checkInView();
-    }, []);
+  useEffect(() => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    if (!wasInView && isInView) {
+      // Element has come into view
+      scrollTo(5);
+    }
+  }, [isInView, scrollTo, wasInView]);
 
-    useEffect(() => {
-        document.addEventListener("scroll", checkInView);
-        window.addEventListener("resize", checkInView);
-        return () => {
-            document.removeEventListener("scroll", checkInView);
-            window.removeEventListener("resize", checkInView);
-        };
-    }, []);
+  const { isMobile = false } = useContext(Context);
 
-    useEffect(() => {
-        const ele = eleRef.current;
-        if (!ele) {
-            return;
-        }
-        if (!wasInView && isInView) {
-            // Element has come into view
-            scrollTo(5);
-        }
-    }, [isInView, scrollTo, wasInView]);
-  
+  if (isMobile) {
+    return (
+      <div id="#5" className={styles.container}>
+        <EndingPage />
+      </div>
+    );
+  }
+
   return (
-      <div id="#5" className={styles.container} ref={eleRef}>
-          <EndingPage />
+    <div id="#5" className={styles.container} ref={eleRef}>
+      <EndingPage />
     </div>
-  )
+  );
 }
 
-export default Five
+export default Five;
