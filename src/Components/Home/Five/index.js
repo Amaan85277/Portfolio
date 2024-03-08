@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { usePrevious } from "../../../utils/usePrevious";
-import Connect from "./Connect";
+import EndingPage from "./EndingPage";
+import { Context } from "../../../Contexts";
 
 function Five({ scrollTo = () => {} }) {
   const eleRef = useRef();
@@ -41,9 +42,19 @@ function Five({ scrollTo = () => {} }) {
     }
   }, [isInView, scrollTo, wasInView]);
 
+  const { isMobile = false } = useContext(Context);
+
+  if (isMobile) {
+    return (
+      <div id="#5" className={styles.container}>
+        <EndingPage />
+      </div>
+    );
+  }
+
   return (
     <div id="#5" className={styles.container} ref={eleRef}>
-      <Connect />
+      <EndingPage />
     </div>
   );
 }

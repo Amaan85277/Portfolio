@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { usePrevious } from "../../../utils/usePrevious";
 import AboutInfo from "./AboutInfo";
 import Profile from "./Profile";
+import { Context } from "../../../Contexts";
 
 function One({ scrollTo = () => {} }) {
-  const eleRef = React.useRef();
-  const [isInView, setIsInView] = React.useState(false);
+  const eleRef = useRef();
+  const [isInView, setIsInView] = useState(false);
   const wasInView = usePrevious(isInView);
 
   const checkInView = () => {
@@ -42,10 +43,23 @@ function One({ scrollTo = () => {} }) {
     }
   }, [isInView, scrollTo, wasInView]);
 
+  const { isMobile = false } = useContext(Context);
+
+  if (isMobile) {
+    return (
+      <div id="#1" className={styles.container}>
+        <AboutInfo />
+        
+        <Profile />
+      </div>
+    );
+  }
+
   return (
     <div id="#1" className={styles.container} ref={eleRef}>
-          <AboutInfo />
-          <Profile />
+      <AboutInfo />
+
+      <Profile />
     </div>
   );
 }

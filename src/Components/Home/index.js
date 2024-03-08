@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./styles.module.css";
 import One from "./One";
 import Two from "./Two";
@@ -7,7 +7,7 @@ import Four from "./Four";
 import Five from "./Five";
 import Header from "../Header";
 import NavBar from "../NavBar";
-import Six from "./Six";
+import { Context } from "../../Contexts";
 
 function Home() {
   const [activeWindow, setActiveWindow] = useState(1);
@@ -32,6 +32,8 @@ function Home() {
     }
   }
 
+  const { isMobile = false } = useContext(Context);
+
   return (
     <div id="main_con" className={styles.container}>
       <Header
@@ -39,17 +41,18 @@ function Home() {
         scrollToWithoutLag={scrollToWithoutLag}
       />
 
-      <NavBar
-        activeWindow={activeWindow}
-        scrollToWithoutLag={scrollToWithoutLag}
-      />
+      {isMobile ? null : (
+        <NavBar
+          activeWindow={activeWindow}
+          scrollToWithoutLag={scrollToWithoutLag}
+        />
+      )}
 
       <One scrollTo={scrollTo} />
       <Two scrollTo={scrollTo} />
       <Three scrollTo={scrollTo} />
       <Four scrollTo={scrollTo} />
       <Five scrollTo={scrollTo} />
-      <Six scrollTo={scrollTo} />
     </div>
   );
 }
