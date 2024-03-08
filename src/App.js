@@ -18,7 +18,7 @@ function App() {
     };
   }, []);
 
-  const isMobile = width <= 510;
+  const isMobile = width <= 768;
 
   const contextValue = useMemo(() => {
     return { isMobile };
