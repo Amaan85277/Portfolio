@@ -24,8 +24,6 @@ function App() {
     return { isMobile };
   }, [isMobile]);
 
-  console.log('isMobile : ', isMobile);
-
   return (
     <Context.Provider value={contextValue}>
       <Routes>
