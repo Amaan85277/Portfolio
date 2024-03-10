@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { usePrevious } from "../../../utils/usePrevious";
 import Bio from "./Bio";
 import Engineering from "./Engineering";
+import { Context } from "../../../Contexts";
 
 function Two({ scrollTo = () => {} }) {
   const eleRef = useRef();
@@ -45,9 +46,22 @@ function Two({ scrollTo = () => {} }) {
     }
   }, [isInView, scrollTo, wasInView]);
 
+  const { isMobile = false } = useContext(Context);
+
+  if (isMobile) {
+    return (
+      <div id="#2" className={styles.container}>
+        <Bio />
+
+        <Engineering />
+      </div>
+    );
+  }
+
   return (
     <div id="#2" className={styles.container} ref={eleRef}>
       <Bio />
+      
       <Engineering />
     </div>
   );

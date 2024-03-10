@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 
 function NavBar({ activeWindow = 0, scrollToWithoutLag = () => { } }) {
-  if (activeWindow === 6) {
+  if (activeWindow === 5) {
     return null;
   }
 
