@@ -24,9 +24,14 @@ function Header({ activeWindow = 0, scrollToWithoutLag = () => {} }) {
 
   return (
     <div className={styles.container}>
+      {/* //? not showing the icon when in mobile mode  > if mobile > color = blue
+      //? > icon is very bold > makes it look weird > change it*/}
+
       <FaMagento
         className={`${styles.main_icon} ${
-          [1, 3, 5].includes(activeWindow) ? styles.green : styles.blue
+          !isMobile && [1, 3, 5].includes(activeWindow)
+            ? styles.green
+            : styles.blue
         }`}
         onClick={() => scrollToWithoutLag(1)}
       />
