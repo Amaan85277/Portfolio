@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./styles.module.css";
 import { FaMagento } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { RiMenu3Fill } from "react-icons/ri";
 import Popover from "@mui/material/Popover";
 import { Link } from "react-router-dom";
+import { Context } from "../../Contexts";
 
 function Header({ activeWindow = 0, scrollToWithoutLag = () => {} }) {
+  const { isMobile = false } = useContext(Context);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (e) => {
@@ -24,14 +26,14 @@ function Header({ activeWindow = 0, scrollToWithoutLag = () => {} }) {
     <div className={styles.container}>
       <FaMagento
         className={`${styles.main_icon} ${
-          [3,5].includes(activeWindow) ? styles.green : styles.blue
+          [1, 3, 5].includes(activeWindow) ? styles.green : styles.blue
         }`}
         onClick={() => scrollToWithoutLag(1)}
       />
 
       <RiMenu3Fill
         className={`${styles.menu} ${
-          [3,5].includes(activeWindow) ? styles.green : styles.blue
+          isMobile || [3, 5].includes(activeWindow) ? styles.green : styles.blue
         }`}
         onClick={handleClick}
       />

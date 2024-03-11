@@ -42,7 +42,7 @@ function EndingPage() {
 
           <div>
             <Link to="/my-resume">
-              <h3>My Resume</h3>
+              My Resume
             </Link>
           </div>
 

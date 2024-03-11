@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./styles.module.css";
 import One from "./One";
 import Two from "./Two";
