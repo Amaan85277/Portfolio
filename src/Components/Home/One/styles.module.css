@@ -1,5 +1,5 @@
 .container {
-    min-height: 100vh; 
+    min-height: 80vh; 
     height: fit-content;
     background-color: #ccf381;
     display: flex;
@@ -8,6 +8,7 @@
     padding: 6em;
 
     @media(max-width:500px){
+        min-height: 100vh;
         padding: 4em 2em;
     }
 }

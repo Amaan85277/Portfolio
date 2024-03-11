@@ -11,6 +11,19 @@
 .post{
     font-size: 48px;
     font-weight: 800;
+    margin-bottom: 16px;
+
+    @media(max-width:500px){
+        text-align: center;
+    }
+}
+
+.about{
+    line-height: 28px;
+
+    @media(max-width:500px){
+        text-align: center;
+    }
 }
 
 .flex{
@@ -24,5 +37,14 @@
         overflow-wrap: break-word;  
         word-wrap: break-word; 
         word-break: break-word;
+        line-height: 16px;
+    }
+
+    @media(max-width:768px){
+       margin-top: 4vh;
+    }
+
+    @media(max-width:500px){
+        text-align: center;
     }
 }
