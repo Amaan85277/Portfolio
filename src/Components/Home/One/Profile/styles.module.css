@@ -16,5 +16,6 @@
     width: 280px;
     height: auto;
     object-fit: contain;
+    mix-blend-mode: exclusion;
   }
 }

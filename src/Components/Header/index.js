@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import styles from "./styles.module.css";
-import { FaMagento } from "react-icons/fa";
+import { PiLadderThin } from "react-icons/pi";
 import { RxCross1 } from "react-icons/rx";
-import { RiMenu3Fill } from "react-icons/ri";
+import { CiMenuFries } from "react-icons/ci";
 import Popover from "@mui/material/Popover";
 import { Link } from "react-router-dom";
 import { Context } from "../../Contexts";
@@ -24,14 +24,14 @@ function Header({ activeWindow = 0, scrollToWithoutLag = () => {} }) {
 
   return (
     <div className={styles.container}>
-      <FaMagento
+      <PiLadderThin
         className={`${styles.main_icon} ${
           [1, 3, 5].includes(activeWindow) ? styles.green : styles.blue
         }`}
         onClick={() => scrollToWithoutLag(1)}
       />
 
-      <RiMenu3Fill
+      <CiMenuFries
         className={`${styles.menu} ${
           isMobile || [3, 5].includes(activeWindow) ? styles.green : styles.blue
         }`}
