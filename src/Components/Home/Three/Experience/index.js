@@ -33,7 +33,7 @@ function Experience() {
   return (
     <div className={styles.container}>
       <div>
-        <div className={styles.label}>So Far,</div>
+        <div className={styles.label}>So Far</div>
 
         <div className={styles.value}>
           {data.map((item) => (

@@ -15,6 +15,7 @@
 
   @media (max-width: 500px) {
     text-align: center;
+    font-size: 32px;
   }
 
   &::after{
@@ -29,6 +30,8 @@
 
   @media (max-width: 500px) {
     text-align: center;
+    font-size: 16px;
+    line-height: 24px;
   }
 }
 

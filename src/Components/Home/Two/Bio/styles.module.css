@@ -1,28 +1,38 @@
 .container {
-    flex: 1;
-    padding: 1em;
-    margin: 1em;
+  flex: 1;
+  padding: 1em;
+  margin: 1em;
 }
 
-.label{
-    color: #4831d4;
-    font-size: 48px;
-    font-weight: 800;
-    margin-bottom: 32px;
+.label {
+  color: #4831d4;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 32px;
+
+  @media (max-width: 500px) {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
 }
 
-.value{
-    color: #4c266a;
-    line-height: 28px;
+.value {
+  color: #4c266a;
+  line-height: 28px;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+    line-height: 24px;
+  }
 }
 
-.svg{
-    display: flex;
-    justify-content: flex-end;
-    padding: 1em;
-    margin-top: 3em;
+.svg {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em;
+  margin-top: 3em;
 
-    @media(max-width:500px){
-        display: none;
-    }
+  @media (max-width: 500px) {
+    display: none;
+  }
 }
