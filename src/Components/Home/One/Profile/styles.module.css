@@ -1,21 +1,20 @@
 .container {
-    flex: 1;
-    display: flex;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
 
-    @media(max-width:768px){
-        justify-content: center;
-    }
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 }
 
-.img_wrapper{
-    border-bottom: 4px solid #fff;
+.img_wrapper {
+  border-bottom: 4px solid #fff;
 
-    img{
-        padding: 16px;
-        width: 280px;
-        height: auto;
-        object-fit: contain;
-        mix-blend-mode: darken;
-    }
+  img {
+    padding: 16px;
+    width: 280px;
+    height: auto;
+    object-fit: contain;
+  }
 }
