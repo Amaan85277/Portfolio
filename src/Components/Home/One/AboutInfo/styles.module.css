@@ -16,10 +16,16 @@
   @media (max-width: 500px) {
     text-align: center;
   }
+
+  &::after{
+    content: ".";
+    color: #eefeff;
+  }
 }
 
 .about {
   line-height: 28px;
+  color: #fff;
 
   @media (max-width: 500px) {
     text-align: center;

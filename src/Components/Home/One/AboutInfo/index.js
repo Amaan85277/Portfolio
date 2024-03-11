@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.css';
 
-const position = 'Software Developer.';
+const position = 'Software Developer';
 const about = `Always eager to learn new technologies and frameworks, and to collaborate with other developers and 
 stakeholders to transform ideas into reality.`
 
