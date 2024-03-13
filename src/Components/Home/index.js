@@ -17,23 +17,24 @@ function Home() {
   let scroll_timeout;
 
   function scrollTo(i) {
-    freezeScroll(); //freeze scroll as soon as the function is initiated.
-
     clearTimeout(timeout);
-    clearTimeout(scroll_timeout);
-
+    // clearTimeout(scroll_timeout);
+    
     const element = document.getElementById(`#${i}`);
+    
     if (element) {
+      freezeScroll(); //freeze scroll as soon as the function is initiated.
+      
       element.scrollIntoView({ behavior: "smooth" });
+      
+      timeout = setTimeout(() => {
+        setActiveWindow(i);
+      }, 300);
+      
+      // scroll_timeout = setTimeout(() => {
+      //   freeScroll(); // free the scroll as soon as the function end...
+      // }, 2000);
     }
-
-    timeout = setTimeout(() => {
-      setActiveWindow(i);
-    }, 280);
-
-    scroll_timeout = setTimeout(() => {
-      freeScroll(); // free the scroll as soon as the function end...
-    }, 2000);
   }
 
   function scrollToWithoutLag(i) {
