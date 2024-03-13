@@ -39,7 +39,10 @@ function Home() {
   const { isMobile = false } = useContext(Context);
 
   return (
-    <div id="main_con" className={styles.container}>
+    <div
+      id="main_con"
+      className={isMobile ? styles.mobile_container : styles.container}
+    >
       <Header
         activeWindow={activeWindow}
         scrollToWithoutLag={scrollToWithoutLag}
