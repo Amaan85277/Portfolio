@@ -9,7 +9,7 @@ const data = [
   },
   {
     id: "2",
-    val: `I'm currently a Software Development Engineer at Cogoport in Gurugram/Gurgaon, 
+    val: `Graduated from Delhi Technological University (formerly DCE), currently a Software Development Engineer at Cogoport in Gurugram/Gurgaon, 
     specializing in frontend development. My focus is on creating intuitive and inclusive experiences
     that meet web standards for all admins and stakeholders, across all entities/countries.`,
   },
