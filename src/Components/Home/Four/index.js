@@ -1,59 +1,43 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import styles from "./styles.module.css";
-import { usePrevious } from "../../../utils/usePrevious";
 import Connect from "./Connect";
 import { Context } from "../../../Contexts";
+import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function Four({ scrollTo = () => {} }) {
-  const eleRef = useRef();
-  const [isInView, setIsInView] = React.useState(false);
-  const wasInView = usePrevious(isInView);
-
-  const checkInView = () => {
-    const ele = eleRef.current;
-    if (!ele) {
-      return;
-    }
-    const rect = ele.getBoundingClientRect();
-    setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
-  };
+  const checkScrollDirection = useCallback(
+    (event) => {
+      if (checkScrollDirectionIsUp(event)) {
+        scrollTo(3);
+      } else {
+        scrollTo(5);
+      }
+    },
+    [scrollTo]
+  );
 
   useEffect(() => {
-    checkInView();
-  }, []);
+    var scrollableElement = document.getElementById("#4");
 
-  useEffect(() => {
-    document.addEventListener("scroll", checkInView);
-    window.addEventListener("resize", checkInView);
+    scrollableElement?.addEventListener("wheel", checkScrollDirection);
+
     return () => {
-      document.removeEventListener("scroll", checkInView);
-      window.removeEventListener("resize", checkInView);
+      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
     };
-  }, []);
-
-  useEffect(() => {
-    const ele = eleRef.current;
-    if (!ele) {
-      return;
-    }
-    if (!wasInView && isInView) {
-      // Element has come into view
-      scrollTo(4);
-    }
-  }, [isInView, scrollTo, wasInView]);
+  }, [checkScrollDirection]);
 
   const { isMobile = false } = useContext(Context);
 
   if (isMobile) {
     return (
-      <div id="#4" className={styles.container}>
+      <div className={styles.container}>
         <Connect />
       </div>
     );
   }
 
   return (
-    <div id="#4" className={styles.container} ref={eleRef}>
+    <div id="#4" className={styles.container}>
       <Connect />
     </div>
   );

@@ -1,62 +1,46 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import styles from "./styles.module.css";
-import { usePrevious } from "../../../utils/usePrevious";
 import AboutInfo from "./AboutInfo";
 import Profile from "./Profile";
 import { Context } from "../../../Contexts";
+import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function One({ scrollTo = () => {} }) {
-  const eleRef = useRef();
-  const [isInView, setIsInView] = useState(false);
-  const wasInView = usePrevious(isInView);
-
-  const checkInView = () => {
-    const ele = eleRef.current;
-    if (!ele) {
-      return;
-    }
-    const rect = ele.getBoundingClientRect();
-    setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
-  };
+  const checkScrollDirection = useCallback(
+    (event) => {
+      if (checkScrollDirectionIsUp(event)) {
+        // do nothing
+      } else {
+        scrollTo(2);
+      }
+    },
+    [scrollTo]
+  );
 
   useEffect(() => {
-    checkInView();
-  }, []);
+    var scrollableElement = document.getElementById("#1");
 
-  useEffect(() => {
-    document.addEventListener("scroll", checkInView);
-    window.addEventListener("resize", checkInView);
+    scrollableElement?.addEventListener("wheel", checkScrollDirection);
+
     return () => {
-      document.removeEventListener("scroll", checkInView);
-      window.removeEventListener("resize", checkInView);
+      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
     };
-  }, []);
-
-  useEffect(() => {
-    const ele = eleRef.current;
-    if (!ele) {
-      return;
-    }
-    if (!wasInView && isInView) {
-      // Element has come into view
-      scrollTo(1);
-    }
-  }, [isInView, scrollTo, wasInView]);
+  }, [checkScrollDirection]);
 
   const { isMobile = false } = useContext(Context);
 
   if (isMobile) {
     return (
-      <div id="#1" className={styles.container}>
+      <div className={styles.container}>
         <AboutInfo />
-        
+
         <Profile />
       </div>
     );
   }
 
   return (
-    <div id="#1" className={styles.container} ref={eleRef}>
+    <div id="#1" className={styles.container}>
       <AboutInfo />
 
       <Profile />
