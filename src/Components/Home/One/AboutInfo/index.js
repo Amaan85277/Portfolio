@@ -6,7 +6,7 @@ const about = `Always eager to learn new technologies and frameworks, and to col
 stakeholders to transform ideas into reality.`;
 
 const skill1 = `Proven experience building successful products.`;
-const skill2 = `Highly skilled at UI Engineering.`;
+const skill2 = `Highly skilled at UI Engineering. Just believe me (・_・;)`;
 
 function AboutInfo() {
   return (

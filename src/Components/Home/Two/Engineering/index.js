@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./styles.module.css";
 
 const data = `In the vibrant world of JavaScript app development, I harness a potent toolkit to craft swift solutions that shine.
-With mastery in React.js, and familiarity with Next.js and React Native.
-Gearing up for my next adventure Node.js and Express.js – because why not keep the tech journey interesting, right?`;
+With proficiency in React.js, familiarity with Next.js and React Native.
+Gearing up for my next adventure Node.js and Express.js – why not keep the journey interesting, right?`;
 
 function Engineering() {
   return (
