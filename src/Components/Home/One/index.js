@@ -9,7 +9,7 @@ function One({ scrollTo = () => {} }) {
 
   const checkScrollDirection = useCallback((event) => {
     if (checkScrollDirectionIsUp(event)) {
-      console.log("UP");
+      // do nothing
     } else {
       scrollTo(2);
     }

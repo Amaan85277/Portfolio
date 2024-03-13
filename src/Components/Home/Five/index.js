@@ -9,8 +9,6 @@ function Five({ scrollTo = () => {} }) {
   const checkScrollDirection = useCallback((event) => {
     if (checkScrollDirectionIsUp(event)) {
       scrollTo(4);
-    } else {
-      console.log('down');
     }
   },[scrollTo])
   

@@ -16,12 +16,12 @@ function Home() {
   let timeout;
   let scroll_timeout;
 
-  async function scrollTo(i) {
+  function scrollTo(i) {
     freezeScroll(); //freeze scroll as soon as the function is initiated.
 
     clearTimeout(timeout);
     clearTimeout(scroll_timeout);
-    
+
     const element = document.getElementById(`#${i}`);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -29,7 +29,7 @@ function Home() {
 
     timeout = setTimeout(() => {
       setActiveWindow(i);
-    }, 200);
+    }, 280);
 
     scroll_timeout = setTimeout(() => {
       freeScroll(); // free the scroll as soon as the function end...
