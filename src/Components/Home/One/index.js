@@ -6,22 +6,24 @@ import { Context } from "../../../Contexts";
 import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function One({ scrollTo = () => {} }) {
+  const checkScrollDirection = useCallback(
+    (event) => {
+      if (checkScrollDirectionIsUp(event)) {
+        // do nothing
+      } else {
+        scrollTo(2);
+      }
+    },
+    [scrollTo]
+  );
 
-  const checkScrollDirection = useCallback((event) => {
-    if (checkScrollDirectionIsUp(event)) {
-      // do nothing
-    } else {
-      scrollTo(2);
-    }
-  },[scrollTo])
-  
   useEffect(() => {
     var scrollableElement = document.getElementById("#1");
 
-    scrollableElement.addEventListener("wheel", checkScrollDirection);
+    scrollableElement?.addEventListener("wheel", checkScrollDirection);
 
     return () => {
-      scrollableElement.removeEventListener("scroll", checkScrollDirection);
+      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
     };
   }, [checkScrollDirection]);
 
@@ -29,7 +31,7 @@ function One({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#1" className={styles.container}>
+      <div className={styles.container}>
         <AboutInfo />
 
         <Profile />

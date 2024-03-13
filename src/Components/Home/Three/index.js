@@ -6,21 +6,24 @@ import { Context } from "../../../Contexts";
 import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function Three({ scrollTo = () => {} }) {
-  const checkScrollDirection = useCallback((event) => {
-    if (checkScrollDirectionIsUp(event)) {
-      scrollTo(2);
-    } else {
-      scrollTo(4);
-    }
-  },[scrollTo])
-  
+  const checkScrollDirection = useCallback(
+    (event) => {
+      if (checkScrollDirectionIsUp(event)) {
+        scrollTo(2);
+      } else {
+        scrollTo(4);
+      }
+    },
+    [scrollTo]
+  );
+
   useEffect(() => {
     var scrollableElement = document.getElementById("#3");
 
-    scrollableElement.addEventListener("wheel", checkScrollDirection);
+    scrollableElement?.addEventListener("wheel", checkScrollDirection);
 
     return () => {
-      scrollableElement.removeEventListener("scroll", checkScrollDirection);
+      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
     };
   }, [checkScrollDirection]);
 
@@ -28,7 +31,7 @@ function Three({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#3" className={styles.container}>
+      <div className={styles.container}>
         <Experience />
 
         <ExperienceFlow />

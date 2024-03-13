@@ -6,22 +6,24 @@ import { Context } from "../../../Contexts";
 import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function Two({ scrollTo = () => {} }) {
+  const checkScrollDirection = useCallback(
+    (event) => {
+      if (checkScrollDirectionIsUp(event)) {
+        scrollTo(1);
+      } else {
+        scrollTo(3);
+      }
+    },
+    [scrollTo]
+  );
 
-  const checkScrollDirection = useCallback((event) => {
-    if (checkScrollDirectionIsUp(event)) {
-      scrollTo(1);
-    } else {
-      scrollTo(3);
-    }
-  },[scrollTo])
-  
   useEffect(() => {
     var scrollableElement = document.getElementById("#2");
 
-    scrollableElement.addEventListener("wheel", checkScrollDirection);
+    scrollableElement?.addEventListener("wheel", checkScrollDirection);
 
     return () => {
-      scrollableElement.removeEventListener("scroll", checkScrollDirection);
+      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
     };
   }, [checkScrollDirection]);
 
@@ -29,7 +31,7 @@ function Two({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#2" className={styles.container}>
+      <div className={styles.container}>
         <Bio />
 
         <Engineering />
@@ -40,7 +42,7 @@ function Two({ scrollTo = () => {} }) {
   return (
     <div id="#2" className={styles.container}>
       <Bio />
-      
+
       <Engineering />
     </div>
   );
