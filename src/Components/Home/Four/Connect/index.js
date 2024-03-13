@@ -54,7 +54,7 @@ function Connect() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>Send me a message!</div>
+      <div className={styles.header}>Send me a message</div>
 
       <div className={styles.sub_header}>
         Got a question or proposal, or just want to say hi? Go ahead.

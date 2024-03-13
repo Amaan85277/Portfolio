@@ -5,11 +5,11 @@ const data = [
   {
     id: "1",
     val: `My goal is to make user-friendly interfaces, look great, and easy to use for everyone, 
-    minimizing the efforts from the user.`,
+    making the user fall in love with the application.`,
   },
   {
     id: "2",
-    val: `I'm currently a Software Development Engineer at Cogoport in Gurgaon, 
+    val: `I'm currently a Software Development Engineer at Cogoport in Gurugram/Gurgaon, 
     specializing in frontend development. My focus is on creating intuitive and inclusive experiences
     that meet web standards for all admins and stakeholders, across all entities/countries.`,
   },
@@ -33,7 +33,7 @@ function Experience() {
   return (
     <div className={styles.container}>
       <div>
-        <div className={styles.label}>So Far,</div>
+        <div className={styles.label}>So Far</div>
 
         <div className={styles.value}>
           {data.map((item) => (
