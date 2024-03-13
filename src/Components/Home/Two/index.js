@@ -1,50 +1,29 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import styles from "./styles.module.css";
-import { usePrevious } from "../../../utils/usePrevious";
 import Bio from "./Bio";
 import Engineering from "./Engineering";
 import { Context } from "../../../Contexts";
+import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function Two({ scrollTo = () => {} }) {
-  const eleRef = useRef();
-  const [isInView, setIsInView] = useState(false);
-  const wasInView = usePrevious(isInView);
 
-  const checkInView = () => {
-    const ele = eleRef.current;
-    if (!ele) {
-      return;
+  const checkScrollDirection = useCallback((event) => {
+    if (checkScrollDirectionIsUp(event)) {
+      scrollTo(1);
+    } else {
+      scrollTo(3);
     }
-    const rect = ele.getBoundingClientRect();
-    setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
-  };
-
+  },[scrollTo])
+  
   useEffect(() => {
-    checkInView();
-  }, []);
+    var scrollableElement = document.getElementById("#2");
 
-  useEffect(() => {
-    document.addEventListener("scroll", checkInView);
-    window.addEventListener("resize", checkInView);
+    scrollableElement.addEventListener("wheel", checkScrollDirection);
+
     return () => {
-      document.removeEventListener("scroll", checkInView);
-      window.removeEventListener("resize", checkInView);
+      scrollableElement.removeEventListener("scroll", checkScrollDirection);
     };
-  }, []);
-
-  useEffect(() => {
-    const ele = eleRef.current;
-    if (!ele) {
-      return;
-    }
-    if (!wasInView && isInView) {
-      // Element has come into view
-      const backgroundStyle = window
-        .getComputedStyle(eleRef.current, null)
-        .getPropertyValue("background-color");
-      scrollTo(2, backgroundStyle);
-    }
-  }, [isInView, scrollTo, wasInView]);
+  }, [checkScrollDirection]);
 
   const { isMobile = false } = useContext(Context);
 
@@ -59,7 +38,7 @@ function Two({ scrollTo = () => {} }) {
   }
 
   return (
-    <div id="#2" className={styles.container} ref={eleRef}>
+    <div id="#2" className={styles.container}>
       <Bio />
       
       <Engineering />
