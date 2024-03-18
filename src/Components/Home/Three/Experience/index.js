@@ -3,11 +3,6 @@ import styles from "./styles.module.css";
 
 const data = [
   {
-    id: "1",
-    val: `My goal is to make user-friendly interfaces, look great, and easy to use for everyone, 
-    making the user fall in love with the application.`,
-  },
-  {
     id: "2",
     val: `Graduated from Delhi Technological University (formerly DCE), currently a Software Development Engineer at Cogoport in Gurugram/Gurgaon, 
     specializing in frontend development. My focus is on creating intuitive and inclusive experiences
