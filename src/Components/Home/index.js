@@ -8,25 +8,30 @@ import Five from "./Five";
 import Header from "../Header";
 import NavBar from "../NavBar";
 import { Context } from "../../Contexts";
+import { freezeScroll, freeScroll } from "../../utils/scrollUtils";
+import debounce from "lodash.debounce";
 
 function Home() {
   const [activeWindow, setActiveWindow] = useState(1);
 
-  let timeout;
+  let scroll_timeout;
 
   function scrollTo(i) {
-    clearTimeout(timeout);
+    freezeScroll(); //freeze scroll as soon as the function is initiated.
+    clearTimeout(scroll_timeout);
+    setActiveWindow(i);
 
     const element = document.getElementById(`#${i}`);
-
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-
-      timeout = setTimeout(() => {
-        setActiveWindow(i);
-      }, 300);
     }
+
+    scroll_timeout = setTimeout(() => {
+      freeScroll(); // free the scroll as soon as the function end...
+    }, 1000);
   }
+
+  const scrollWithDebounce = debounce(scrollTo, 1000);
 
   function scrollToWithoutLag(i) {
     setActiveWindow(i);
@@ -55,11 +60,11 @@ function Home() {
         />
       )}
 
-      <One scrollTo={scrollTo} scrollToWithoutLag={scrollToWithoutLag} />
-      <Two scrollTo={scrollTo} scrollToWithoutLag={scrollToWithoutLag} />
-      <Three scrollTo={scrollTo} scrollToWithoutLag={scrollToWithoutLag} />
-      <Four scrollTo={scrollTo} scrollToWithoutLag={scrollToWithoutLag} />
-      <Five scrollTo={scrollTo} scrollToWithoutLag={scrollToWithoutLag} />
+      <One scrollTo={scrollWithDebounce} />
+      <Two scrollTo={scrollWithDebounce} />
+      <Three scrollTo={scrollWithDebounce} />
+      <Four scrollTo={scrollWithDebounce} />
+      <Five scrollTo={scrollWithDebounce} />
     </div>
   );
 }

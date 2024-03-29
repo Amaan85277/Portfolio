@@ -1,7 +1,6 @@
 .container {
   width: 100vw;
   height: 100vh;
-  overflow-y: hidden; /* to stop user from scrolling > and only scroll through function */
 }
 
 .mobile_container{

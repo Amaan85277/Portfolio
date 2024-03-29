@@ -1,28 +1,46 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
+import { usePrevious } from "../../../utils/usePrevious";
 import EndingPage from "./EndingPage";
 import { Context } from "../../../Contexts";
-import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function Five({ scrollTo = () => {} }) {
-  const checkScrollDirection = useCallback(
-    (event) => {
-      if (checkScrollDirectionIsUp(event)) {
-        scrollTo(4);
-      }
-    },
-    [scrollTo]
-  );
+  const eleRef = useRef();
+  const [isInView, setIsInView] = React.useState(false);
+  const wasInView = usePrevious(isInView);
+
+  const checkInView = () => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    const rect = ele.getBoundingClientRect();
+    setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
+  };
 
   useEffect(() => {
-    var scrollableElement = document.getElementById("#5");
+    checkInView();
+  }, []);
 
-    scrollableElement?.addEventListener("wheel", checkScrollDirection);
-
+  useEffect(() => {
+    document.addEventListener("scroll", checkInView);
+    window.addEventListener("resize", checkInView);
     return () => {
-      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
+      document.removeEventListener("scroll", checkInView);
+      window.removeEventListener("resize", checkInView);
     };
-  }, [checkScrollDirection]);
+  }, []);
+
+  useEffect(() => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    if (!wasInView && isInView) {
+      // Element has come into view
+      scrollTo(5);
+    }
+  }, [isInView, scrollTo, wasInView]);
 
   const { isMobile = false } = useContext(Context);
 
@@ -35,7 +53,7 @@ function Five({ scrollTo = () => {} }) {
   }
 
   return (
-    <div id="#5" className={styles.container}>
+    <div id="#5" className={styles.container} ref={eleRef}>
       <EndingPage />
     </div>
   );
