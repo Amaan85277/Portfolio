@@ -46,7 +46,7 @@ function Home() {
   return (
     <div
       id="main_con"
-      className={isMobile ? styles.mobile_container : styles.container}
+      className={styles.container}
     >
       <Header
         activeWindow={activeWindow}
