@@ -1,31 +1,47 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
+import { usePrevious } from "../../../utils/usePrevious";
 import Experience from "./Experience";
 import ExperienceFlow from "./ExperienceFlow";
 import { Context } from "../../../Contexts";
-import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function Three({ scrollTo = () => {} }) {
-  const checkScrollDirection = useCallback(
-    (event) => {
-      if (checkScrollDirectionIsUp(event)) {
-        scrollTo(2);
-      } else {
-        scrollTo(4);
-      }
-    },
-    [scrollTo]
-  );
+  const eleRef = useRef();
+  const [isInView, setIsInView] = React.useState(false);
+  const wasInView = usePrevious(isInView);
+
+  const checkInView = () => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    const rect = ele.getBoundingClientRect();
+    setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
+  };
 
   useEffect(() => {
-    var scrollableElement = document.getElementById("#3");
+    checkInView();
+  }, []);
 
-    scrollableElement?.addEventListener("wheel", checkScrollDirection);
-
+  useEffect(() => {
+    document.addEventListener("scroll", checkInView);
+    window.addEventListener("resize", checkInView);
     return () => {
-      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
+      document.removeEventListener("scroll", checkInView);
+      window.removeEventListener("resize", checkInView);
     };
-  }, [checkScrollDirection]);
+  }, []);
+
+  useEffect(() => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    if (!wasInView && isInView) {
+      // Element has come into view
+      scrollTo(3);
+    }
+  }, [isInView, scrollTo, wasInView]);
 
   const { isMobile = false } = useContext(Context);
 
@@ -40,7 +56,7 @@ function Three({ scrollTo = () => {} }) {
   }
 
   return (
-    <div id="#3" className={styles.container}>
+    <div id="#3" className={styles.container} ref={eleRef}>
       <Experience />
 
       <ExperienceFlow />

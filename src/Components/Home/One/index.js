@@ -1,31 +1,47 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
+import { usePrevious } from "../../../utils/usePrevious";
 import AboutInfo from "./AboutInfo";
 import Profile from "./Profile";
 import { Context } from "../../../Contexts";
-import checkScrollDirectionIsUp from "../../../utils/checkScrollDirectionIsUp";
 
 function One({ scrollTo = () => {} }) {
-  const checkScrollDirection = useCallback(
-    (event) => {
-      if (checkScrollDirectionIsUp(event)) {
-        // do nothing
-      } else {
-        scrollTo(2);
-      }
-    },
-    [scrollTo]
-  );
+  const eleRef = useRef();
+  const [isInView, setIsInView] = useState(false);
+  const wasInView = usePrevious(isInView);
+
+  const checkInView = () => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    const rect = ele.getBoundingClientRect();
+    setIsInView(rect.top + 100 < window.innerHeight && rect.bottom >= 100);
+  };
 
   useEffect(() => {
-    var scrollableElement = document.getElementById("#1");
+    checkInView();
+  }, []);
 
-    scrollableElement?.addEventListener("wheel", checkScrollDirection);
-
+  useEffect(() => {
+    document.addEventListener("scroll", checkInView);
+    window.addEventListener("resize", checkInView);
     return () => {
-      scrollableElement?.removeEventListener("scroll", checkScrollDirection);
+      document.removeEventListener("scroll", checkInView);
+      window.removeEventListener("resize", checkInView);
     };
-  }, [checkScrollDirection]);
+  }, []);
+
+  useEffect(() => {
+    const ele = eleRef.current;
+    if (!ele) {
+      return;
+    }
+    if (!wasInView && isInView) {
+      // Element has come into view
+      scrollTo(1);
+    }
+  }, [isInView, scrollTo, wasInView]);
 
   const { isMobile = false } = useContext(Context);
 
@@ -33,14 +49,14 @@ function One({ scrollTo = () => {} }) {
     return (
       <div className={styles.container}>
         <AboutInfo />
-
+        
         <Profile />
       </div>
     );
   }
 
   return (
-    <div id="#1" className={styles.container}>
+    <div id="#1" className={styles.container} ref={eleRef}>
       <AboutInfo />
 
       <Profile />
