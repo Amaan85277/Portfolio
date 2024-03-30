@@ -24,6 +24,12 @@
     font-size: 14px;
     line-height: 24px;
   }
+
+  &::after {
+    padding-left: 12px;
+    content: "₍ᐢ. ̫ .ᐢ₎";
+    color: #7966f5;
+  }
 }
 
 .svg {

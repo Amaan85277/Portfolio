@@ -46,7 +46,7 @@ function Five({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#5" className={styles.container}>
+      <div className={styles.container}>
         <EndingPage />
       </div>
     );

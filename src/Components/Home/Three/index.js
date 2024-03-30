@@ -47,7 +47,7 @@ function Three({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#3" className={styles.container}>
+      <div className={styles.container}>
         <Experience />
 
         <ExperienceFlow />

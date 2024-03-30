@@ -54,7 +54,7 @@ function EndingPage() {
         <div className={styles.copyright}>
           <AiOutlineCopyright />
 
-          <span>Amaan Ahmad</span>
+          <span>Amaan Ahmad 2024</span>
         </div>
 
         <div className={styles.flex}>

@@ -50,7 +50,7 @@ function Two({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#2" className={styles.container}>
+      <div className={styles.container}>
         <Bio />
 
         <Engineering />
@@ -61,7 +61,7 @@ function Two({ scrollTo = () => {} }) {
   return (
     <div id="#2" className={styles.container} ref={eleRef}>
       <Bio />
-      
+
       <Engineering />
     </div>
   );

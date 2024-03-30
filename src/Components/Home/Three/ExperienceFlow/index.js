@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import cogoport_logo from "../../../../assets/cogoport.avif";
 import nic_logo from "../../../../assets/nic.png";
+import dtu_logo from "../../../../assets/dtu.png";
 
 const data = [
   {
@@ -23,12 +24,21 @@ const data = [
   {
     id: "3",
     company: "National Informatics Center",
-    position: "Web Developer",
+    position: "Web Developer Intern",
     from: "05, 2022",
     to: "06, 2022",
     image_url: nic_logo,
   },
+  {
+    id: "4",
+    company: "Delhi Technological University (formerly DCE)",
+    position: "Bachelor of Technology",
+    from: "08, 2019",
+    to: "05, 2023",
+    image_url: dtu_logo,
+  },
 ];
+
 function ExperienceFlow() {
   return (
     <div className={styles.container}>

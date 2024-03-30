@@ -47,7 +47,7 @@ function One({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#1" className={styles.container}>
+      <div className={styles.container}>
         <AboutInfo />
         
         <Profile />

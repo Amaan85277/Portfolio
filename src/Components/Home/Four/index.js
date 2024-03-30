@@ -46,7 +46,7 @@ function Four({ scrollTo = () => {} }) {
 
   if (isMobile) {
     return (
-      <div id="#4" className={styles.container}>
+      <div className={styles.container}>
         <Connect />
       </div>
     );
