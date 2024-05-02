@@ -35,6 +35,7 @@
   font-size: 48px;
   font-weight: 800;
   margin-bottom: 16px;
+  animation: drop 0.4s linear forwards;
 
   @media (max-width: 500px) {
     text-align: center;
@@ -50,6 +51,7 @@
 .about {
   line-height: 28px;
   color: #fff;
+  animation: drop 0.4s linear forwards;
 
   @media (max-width: 500px) {
     text-align: center;
@@ -70,6 +72,7 @@
     word-wrap: break-word;
     word-break: break-word;
     line-height: 16px;
+    animation: drop 0.4s linear forwards;
   }
 
   @media (max-width: 768px) {
@@ -79,4 +82,27 @@
   @media (max-width: 500px) {
     text-align: center;
   }
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-30px);
+        opacity: 0.2;
+    }
+    65% {
+        transform: translateY(-20px);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateY(-10px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }
