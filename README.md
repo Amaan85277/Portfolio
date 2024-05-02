@@ -1,2 +1,2 @@
-# Portfolio - [https://amaan-ahmad.netlify.com/](https://amaan-ahmad.netlify.com/)
+# Portfolio - [https://amaan-ahmad.netlify.app/](https://amaan-ahmad.netlify.app/)
 Telling a little bit about me through what i love :)
