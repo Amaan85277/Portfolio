@@ -8,7 +8,7 @@ function LandingPage() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2400);
+    }, 1200);
   });
 
   return (
